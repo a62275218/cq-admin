@@ -23,4 +23,8 @@ export default {
   @import '~bootstrap-vue/dist/bootstrap-vue.css';
   // Import Main styles for this application
   @import 'assets/scss/style';
+  .global-title{
+    font-size:1rem;
+    margin-bottom:1.5rem;
+  }
 </style>
