@@ -156,7 +156,6 @@ export default {
       return statusMap[stat];
     },
     handleModify(type, row) {
-      console.log(row);
       if(row.status === '已完成' && type === "finish"){
           return
       }
@@ -169,23 +168,6 @@ export default {
           cancelButtonText: "取消",
           type: "warning"
         })
-          .then(async () => {
-            let res = await request("admin/postModifyOrder.php", {
-              method: "POST",
-              data: {
-                id: row.id,
-                status: type === 'cancel'?"已取消":"已完成"
-              }
-            });
-            if (res.code == 0) {
-              this.fetchBillList();
-            }
-            this.$message({
-              type: res.code == 0 ? "success" : "error",
-              message: res.code == 0 ? "修改成功!" : "修改失败"
-            });
-          })
-          .catch(() => {});
       } else {
         let date = "",
           time = "";
